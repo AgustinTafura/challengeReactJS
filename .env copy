@@ -1,0 +1,9 @@
+REACT_APP_DB_FB_apiKey = xxx
+REACT_APP_DB_FB_authDomain = xxx
+REACT_APP_DB_FB_projectId = xxx
+REACT_APP_DB_FB_storageBucket = xxx
+REACT_APP_DB_FB_messagingSenderId = 969799560938
+REACT_APP_DB_FB_appId = xxx
+REACT_APP_DB_FB_measurementId = xxx
+
+REACT_APP_PUBLIC_URL=https://agustintafura.github.io/challengeReactJS/
