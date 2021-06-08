@@ -23,18 +23,6 @@ const AuthModal = (props) => {
         e.classList.add("notEmpty")
     }
 
-
-        useEffect(() => {
- 
-        
-
-
-
-
-        return () => {
-            
-        }
-    }, [])
         
     window.addEventListener("load", ()=>{
                    //show register Form
@@ -44,7 +32,6 @@ const AuthModal = (props) => {
                        e.stopImmediatePropagation();
                        $('#signinModal').modal("hide");
                        $('#signupModal').modal("show");
-                       
                    })
                    
                    //show login Form
@@ -69,12 +56,9 @@ const AuthModal = (props) => {
                        
                        createNewUserWithEmailAndPassword(email,password)
                        .then((userCredential) => {
-
-           
-                           // clear the form
-                           $('#signupModal').modal("hide");
-                           signUpForm.reset();
-           
+                            // clear the form
+                            $('#signupModal').modal("hide");
+                            signUpForm.reset();
                        }).catch((err)=>{
 
                            setErrors({email:'Éste email ya esta en uso'})
@@ -181,7 +165,7 @@ const AuthModal = (props) => {
                 <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                    <h3>Crear una nueva cuenta</h3>
+                    <h3>Create new account</h3>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -203,12 +187,12 @@ const AuthModal = (props) => {
                             </label>
                         </div>
                         
-                        <button type="submit" className="btn-solid-lg btn-block">Registrarse</button>
-                        <button type="button" className="btn-solid-lg btn-block googleLogin">Ingresar con tu cuenta de Google</button>
-                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Ingresar con tu cuenta de Facebook</button>
+                        <button type="submit" className="btn-solid-lg btn-block">Register</button>
+                        <button type="button" className="btn-solid-lg btn-block googleLogin">Login with Google</button>
+                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Login with Facebook</button>
  
                         <div className="nav-item logged-out justify-content-center mt-2">
-                            <span >¿Tienes cuenta?</span> <a className="loginModal mx-2" href="/change" >Ingresar</a>
+                            <span >Already have an account?</span> <a className="loginModal mx-2" href="/change" >Login</a>
                         </div>
                     </form>
                     </div>
@@ -221,7 +205,7 @@ const AuthModal = (props) => {
                 <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                    <h3>Ingresar</h3>
+                    <h3>Login</h3>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -241,11 +225,11 @@ const AuthModal = (props) => {
                             {errors.password? <small className="text-muted"> - {errors.password}  </small> : null }
                             </label>
                         </div>
-                        <button type="submit" className="btn-solid-lg btn-block">Entrar</button>
-                        <button type="button" className="btn-solid-lg btn-block googleLogin">Ingresar con tu cuenta de Google</button>
-                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Ingresar con tu cuenta de Facebook</button>
+                        <button type="submit" className="btn-solid-lg btn-block">Login</button>
+                        <button type="button" className="btn-solid-lg btn-block googleLogin">Login with Google</button>
+                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Login with Facebook</button>
                         <div className="nav-item logged-out justify-content-center ml-3 mt-2">
-                            <span >¿No tienes una cuenta?</span> <a className="mx-2 registerModal" href="/change" >Registrarse</a>
+                            <span >Don't have an account? </span> <a className="mx-2 registerModal" href="/change" >Register</a>
                         </div>
                     </form>
                     </div>
@@ -259,12 +243,11 @@ const AuthModal = (props) => {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Estas seguro que desas salir?</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Are you sure?</h5>
                             <button className="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        {/* <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div> */}
                         <div className="modal-footer">
                             <button className="btn-solid-lg btn-light" type="button" data-dismiss="modal">Cancel</button>
                             <div onClick={()=>{logout() }} className="btn-solid-lg " id="logOutButton">Logout</div>

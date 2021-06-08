@@ -1,11 +1,11 @@
 import { Route, Switch } from "react-router"
 import HomeContainer from '../containers/HomeContainer';
-import AccessContainer from '../containers/AccessContainer';
-// import NotFound from '../components/NotFound';
+import PrivateContainer from '../containers/PrivateContainer';
 import {PublicRoute} from './helperRoutes';
 import {PrivateRoute} from './helperRoutes';
 import { UserContext } from "../context/UserContext";
 import { useContext } from "react";
+import { DataProvider } from "../context/DataContext";
 
 const Routes = () => {
 
@@ -16,11 +16,14 @@ const Routes = () => {
             
             <PublicRoute exact path="/" component={HomeContainer}/>   
 
-            {isAuthenticated && <PrivateRoute exact path="/private" component={AccessContainer}/>}
+            {isAuthenticated && 
+                <DataProvider>
+                    <PrivateRoute exact path="/private" component={PrivateContainer}/>
+                </DataProvider>
+            }
             
             <Route path="/**" >ERROR 404</Route>
 
-            {/* <Route exact path={"*"} to="/booking"/> */}
         </Switch>
     )
 }

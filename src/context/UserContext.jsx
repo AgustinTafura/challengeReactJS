@@ -41,15 +41,6 @@ export const UserProvider = ({ children }) => {
                 (userCredentials)=>{
 
                     const user =  userCredentials.user
-                   
-                    user.sendEmailVerification().then((a)=> {
-                        toast("Ingresa a tu email y verifica tu cuenta!", {
-                            // autoClose: false,
-                            position: "top-right",
-                        });
-                    }).catch( (error) => {
-                        // console.log('An error happened.', error)
-                    });
                     return user
                 }
             ).catch(
@@ -65,7 +56,7 @@ export const UserProvider = ({ children }) => {
                             });
                         });
                     } else {
-                                toast.error("No hemos podido crear a tu cuenta. Intentalo nuevamente!", {
+                                toast.error(errors.message, {
                             // autoClose: false,
                             position: "top-right",
                         });
@@ -89,17 +80,17 @@ export const UserProvider = ({ children }) => {
                 case "auth/wrong-password": 
                     auth.fetchSignInMethodsForEmail(email).then(function(providers) {
 
-                            var msg = providers.length > 0 && providers === "password" ? ` Contraseña erronea`: `Intenta ingresando con tu cuenta de ${providers}`
+                            var msg = providers.length > 0 && providers === "password" ? ` Wrong password`: `This email already exist in our database, try access with your ${providers} account`
                             toast(msg, {
                                 // autoClose: false,
                                 position: "top-right",
                             });
                     });
                     break;
-                case "auth/too-many-requests": toast('Has realizado muchos intentos incorrecto, intenta más tarde nuevamente', {position: "top-right"});  
+                case "auth/too-many-requests": toast(errors.message, {position: "top-right"});  
                     break;
             
-                default: toast("No hemos podido ingresar a tu cuenta. Intentalo nuevamente!", {position: "top-right"}); 
+                default: toast(errors.message, {position: "top-right"}); 
                     break;
             }
 
@@ -119,7 +110,7 @@ export const UserProvider = ({ children }) => {
             if(errors.code === "auth/account-exists-with-different-credential") {
                 auth.fetchSignInMethodsForEmail(errors.email).then(function(providers) {
 
-                    var msg = providers.length > 0 && providers === "password" ? `Intenta ingresar con email y contraseña`: `Intenta ingresando con tu cuenta de ${providers}`
+                    var msg = providers.length > 0 && providers === "password" ? `Try login with emila and password`: `This email already exist in our database, try access with your ${providers} account`
                     toast.error(msg, {
                         // autoClose: false,
                         position: "top-right",
@@ -127,7 +118,7 @@ export const UserProvider = ({ children }) => {
                 });
             } else {
                 console.log('lolololo', errors)
-                toast.error("No hemos podido ingresar a tu cuenta. Intentalo nuevamente!", {
+                toast.error(errors.message, {
                     // autoClose: false,
                     position: "top-right",
                 });
@@ -147,7 +138,7 @@ export const UserProvider = ({ children }) => {
             if (errors.code === "auth/account-exists-with-different-credential") {
                 auth.fetchSignInMethodsForEmail(errors.email).then(function (providers) {
 
-                    var msg = providers.length > 0 && providers === "password" ? `Intenta ingresar con email y contraseña` : `Intenta ingresando con tu cuenta de ${providers}`;
+                    var msg = providers.length > 0 && providers === "password" ? `Try login with emila and password`: `This email already exist in our database, try access with your ${providers} account`
                     toast.error(msg, {
                         // autoClose: false,
                         position: "top-right",
@@ -155,7 +146,7 @@ export const UserProvider = ({ children }) => {
                 });
             } else {
 
-                toast.error("No hemos podido ingresar a tu cuenta. Intentalo nuevamente!", {
+                toast.error(errors.message, {
                     // autoClose: false,
                     position: "top-right",
                 });
@@ -165,7 +156,7 @@ export const UserProvider = ({ children }) => {
     }
 
     const logOutUser = () => {
-        const notify = () => toast.success("Has cerrado sesión!", {
+        const notify = () => toast.success("Logout successful!", {
             // autoClose: false,
             position: "top-right",
         });
