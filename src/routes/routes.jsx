@@ -1,15 +1,15 @@
-import { Route, Switch } from "react-router"
+import {  Switch } from "react-router"
 import HomeContainer from '../containers/HomeContainer';
 import PrivateContainer from '../containers/PrivateContainer';
 import {PublicRoute} from './helperRoutes';
 import {PrivateRoute} from './helperRoutes';
 import { UserContext } from "../context/UserContext";
 import { useContext } from "react";
-import { DataProvider } from "../context/DataContext";
+
 
 const Routes = () => {
 
-    const {isAuthenticated,user} = useContext(UserContext)
+    const {isAuthenticated} = useContext(UserContext)
 
     return (
         <Switch>
@@ -18,12 +18,12 @@ const Routes = () => {
 
             {isAuthenticated && 
 
-                <PrivateRoute exact path="/private">
+                <PrivateRoute exact path="/bands/:id?">
                         <PrivateContainer/>
                 </PrivateRoute>
             }
             
-            <Route path="/**" >ERROR 404</Route>
+            {/* <Route path="/**" >ERROR 404</Route> */}
 
         </Switch>
     )

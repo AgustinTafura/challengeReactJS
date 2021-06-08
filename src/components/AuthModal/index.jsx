@@ -1,5 +1,5 @@
 import { UserContext } from "../../context/UserContext";
-import { useContext, useState, useEffect} from "react";
+import { useContext, useState} from "react";
 import { withRouter, useLocation } from "react-router-dom";
 import $ from 'jquery'
 
@@ -188,8 +188,8 @@ const AuthModal = (props) => {
                         </div>
                         
                         <button type="submit" className="btn-solid-lg btn-block">Register</button>
-                        <button type="button" className="btn-solid-lg btn-block googleLogin">Login with Google</button>
-                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Login with Facebook</button>
+                        <button type="button" className="btn-solid-lg btn-block googleLogin">Access with Google</button>
+                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Access with Facebook</button>
  
                         <div className="nav-item logged-out justify-content-center mt-2">
                             <span >Already have an account?</span> <a className="loginModal mx-2" href="/change" >Login</a>
@@ -213,21 +213,21 @@ const AuthModal = (props) => {
                     <div className="modal-body">
                     <form id="login-form">
                     <div className="form-group">
-                            <input onFocus={(e)=>checkErrors(e.target)} onBlur={(e)=>checkErrors(e.target)} type="email"  className={`form-control-input ${errors.email ? 'notEmpty errorData':''} `} id="login-email" name="email" required />
                             <label className="label-control" htmlFor="email">Email
-                            {errors.email? <small className="text-muted"> -  {errors.email}  </small> : null }
+                            <input onFocus={(e)=>checkErrors(e.target)} onBlur={(e)=>checkErrors(e.target)} type="email"  className={`form-control-input ${errors.email ? 'notEmpty errorData':''} `} id="login-email" name="email" required />
+
                             </label>
                         </div>
                         
                         <div className="form-group">
-                            <input onFocus={(e)=>e.target.classList.add("notEmpty")} onBlur={(e)=>checkErrors(e.target)} type="password" className="form-control-input" id="login-password" name="password" minLength="6" required/>
                             <label className="label-control" htmlFor="email">Password
-                            {errors.password? <small className="text-muted"> - {errors.password}  </small> : null }
+                            <input onFocus={(e)=>e.target.classList.add("notEmpty")} onBlur={(e)=>checkErrors(e.target)} type="password" className="form-control-input" id="login-password" name="password" minLength="6" required/>
+
                             </label>
                         </div>
                         <button type="submit" className="btn-solid-lg btn-block">Login</button>
-                        <button type="button" className="btn-solid-lg btn-block googleLogin">Login with Google</button>
-                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Login with Facebook</button>
+                        <button type="button" className="btn-solid-lg btn-block googleLogin">Access with Google</button>
+                        <button type="button" className="btn-solid-lg btn-block facebookLogin">Access with Facebook</button>
                         <div className="nav-item logged-out justify-content-center ml-3 mt-2">
                             <span >Don't have an account? </span> <a className="mx-2 registerModal" href="/change" >Register</a>
                         </div>

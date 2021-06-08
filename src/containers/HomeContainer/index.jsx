@@ -7,11 +7,11 @@ const HomeContainer = () => {
     return (
         <>
             {user?
-                <Link to='/private'>
+                <Link to='/bands'>
                     GET BANDS
                 </Link>
             : 
-                ('HOMECONTAINER')
+                <h4>Loggin to Access</h4>
             }
 
 

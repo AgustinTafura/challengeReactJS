@@ -1,15 +1,13 @@
 import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import { Link, useLocation } from "react-router-dom";
-import React, { useEffect,useContext } from "react";
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 const NavBar = () => {
 
     const { user } = useContext(UserContext)
-    const actualLocation = useLocation()
-
-    
+ 
 
 
     return (
