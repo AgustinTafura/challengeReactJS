@@ -19,8 +19,8 @@ const PrivateContainer = () => {
     const sort = (e)=>{
         const selectedValue = e.target.value
         if(selectedValue) {
-            var asc =()=> Object.values(bands).sort((a,b) => (a.namie > b.namie) ? 1 : ((b.name > a.name) ? -1 : 0))
-            var des =()=> Object.values(bands).sort((a,b) => (a.namie < b.namie) ? 1 : ((b.name < a.name) ? -1 : 0))
+            var asc =()=> Object.values(dataToShow).sort((a,b) => (a.namie > b.namie) ? 1 : ((b.name > a.name) ? -1 : 0))
+            var des =()=> Object.values(dataToShow).sort((a,b) => (a.namie < b.namie) ? 1 : ((b.name < a.name) ? -1 : 0))
             selectedValue === 'asc'? setDataToShow(asc()) : setDataToShow(des())
         }
     }
