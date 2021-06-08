@@ -7,17 +7,22 @@ import Navbar from './components/NavBar'
 import AuthModal from './components/AuthModal'
 import Routes from './routes/routes';
 import { UserProvider } from './context/UserContext';
+import { DataProvider } from './context/DataContext';
 
 function App() {
   return (
     <div className="App">
 
         <BrowserRouter>
-        <UserProvider>
-          <Navbar/>
-          <AuthModal/>
-          <Routes/>
-        </UserProvider>
+          <UserProvider>
+          <DataProvider>
+
+            <Navbar/>
+            <AuthModal/>
+            <Routes/>
+          
+          </DataProvider>
+          </UserProvider>
         </BrowserRouter>
       <header>
         

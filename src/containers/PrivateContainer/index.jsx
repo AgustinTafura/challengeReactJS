@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { DataContext } from '../../context/DataContext'
 import './index.scss'
 
 const PrivateContainer = () => {
 
+    const {bands} = useContext(DataContext)
     const [isLoading, setIsLoading] = useState(false)
-    var data = [];
-    useEffect(async () => {
-  
 
-    }, [])
 
     if(isLoading){
         return (
@@ -30,7 +29,7 @@ const PrivateContainer = () => {
 
     return (
         <>
-            {data? 'zzzzzzzzz': 'lala'}
+            {bands? bands.map(band=><li>{band.name}</li>): 'lala'}
 
         </>
     )

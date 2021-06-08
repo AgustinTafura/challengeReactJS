@@ -17,9 +17,10 @@ const Routes = () => {
             <PublicRoute exact path="/" component={HomeContainer}/>   
 
             {isAuthenticated && 
-                <DataProvider>
-                    <PrivateRoute exact path="/private" component={PrivateContainer}/>
-                </DataProvider>
+
+                <PrivateRoute exact path="/private">
+                        <PrivateContainer/>
+                </PrivateRoute>
             }
             
             <Route path="/**" >ERROR 404</Route>
